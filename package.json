@@ -1,0 +1,55 @@
+{
+  "name": "merkle-json",
+  "version": "1.0.0",
+  "description": "Compute hash of Javascript object having optional Merkle hash tags"
+  "main": "index.js",
+  "directories": {
+    "test": "test",
+    "dist": "dist",
+    "src": "src",
+    "doc": "doc"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^8.2.1",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-istanbul": "^4.1.1",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-plugin-transform-vue-jsx": "^3.5.0",
+    "babel-preset-env": "^1.3.2",
+    "babel-preset-stage-2": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "mocha": "^3.2.0",
+    "should": "^11.2.0"
+  },
+  "engine-strict": true,
+  "engines": {
+    "node": ">=6.11.0"
+  },
+  "scripts": {
+    "test": "npm run test:verbose",
+    "test:test": "mocha -w -R min --inline-diffs -g TEST",
+    "test:verbose": "mocha --inline-diffs",
+    "test:watch": "mocha -w --inline-diffs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oyamist/merkle-json.git"
+  },
+  "bin": {},
+  "keywords": [
+    "REST",
+    "resource bundle",
+    "express",
+    "kinann-org"
+  ],
+  "author": "Karl Lew",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oyamist/merkle-json/issues"
+  },
+  "homepage": "https://github.com/oyamist/merkle-json"
+}
