@@ -1,7 +1,7 @@
 {
   "name": "merkle-json",
-  "version": "1.0.0",
-  "description": "Compute hash of Javascript object having optional Merkle hash tags"
+  "version": "1.0.1",
+  "description": "Compute hash of Javascript object having optional Merkle hash tags",
   "main": "index.js",
   "directories": {
     "test": "test",
