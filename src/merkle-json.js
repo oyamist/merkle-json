@@ -208,6 +208,8 @@
             } else if (typeof value === 'number') {
                 value = value + '';
                 return this.hash(value);
+            } else if (value instanceof Date) {
+                return this.hash(value.toJSON());
             } else if (value === false) {
                 return this.hash('false');
             } else if (value === true) {
@@ -230,6 +232,35 @@
                     return k === this.hashTag ? a : (a+k+':'+this.hash(value[k])+',')
                 }, "");
                 return this.hash(acc);
+            }
+            throw new Error("hash() not supported:" + typeof(value));
+        }
+
+        serialize(value) {
+            if (value instanceof Array) {
+                var body = value.reduce((a,v) => {
+                    return a 
+                        ? `${a},${this.serialize(v)}`
+                        : `${this.serialize(v)}`;
+                },"");
+                return `[${body}]`;
+            } else if (value instanceof Date) {
+                return `"${value.toJSON()}"`;
+            } else if (value === null) {
+                return JSON.stringify(value);
+            } else if (typeof value === 'object') {
+                if ((typeof value.toJSON) === 'function') {
+                    value = JSON.parse(JSON.stringify(value));
+                }
+                var keys = Object.keys(value).sort();
+                var body = keys.reduce((a,k) => {
+                    return a 
+                        ? `${a},"${k}":${this.serialize(value[k])}`
+                        : `"${k}":${this.serialize(value[k])}`;
+                }, "");
+                return(`{${body}}`);
+            } else {
+                return JSON.stringify(value);
             }
             throw new Error("hash() not supported:" + typeof(value));
         }

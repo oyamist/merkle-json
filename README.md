@@ -13,6 +13,21 @@ In addition, MerkleJson is efficient in that it only recalculates
 object hashes if the object has no Merkle hash tag. If a Merkle hash
 tag is present, its value is returned as the hash value of that object.
 
+### Serialize JSON object
+Unlike JSON, MerklJson serializes objects canonically.
+
+```js
+var obj = {
+    d:4,
+    b:2,
+    a:1,
+    c:3,
+};
+console.log(JSON.stringify(obj)); // {"d":4,"b":2,"a":1,"c":3}
+var mj = new MerkleJson();
+console.log(mj.serialize(obj)); // {"a":1,"b":2,"c":3,"d":4}
+```
+
 ### Compute hash of JSON object
 ```js
 var mj = new MerkleJson();
