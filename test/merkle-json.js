@@ -166,7 +166,7 @@
         }); 
         should(hash).equal('441e4f8dabdc6cb17dc9500cee73155b');
     });
-    it("serialize(obj) serialize object canonically", function() {
+    it("stringify(obj) serialize object canonically", function() {
         var obj1 = {
             a: 1,
             b: 2,
@@ -180,7 +180,7 @@
             b: 2,
         };
     });
-    it("serialize(obj) serialize arrays canonically", function() {
+    it("stringify(obj) serialize arrays canonically", function() {
         var obj1 = {
             a: 1,
             b: 2,
@@ -198,29 +198,29 @@
         var list1 = [1,2,obj1];
         var list2 = [1,2,obj2];
 
-        should(mj.serialize(list1)).equal('[1,2,{"a":1,"b":2,"c":3,"d":4}]');
-        should(mj.serialize(list1)).equal(JSON.stringify(list1));
+        should(mj.stringify(list1)).equal('[1,2,{"a":1,"b":2,"c":3,"d":4}]');
+        should(mj.stringify(list1)).equal(JSON.stringify(list1));
 
-        should(mj.serialize(list2)).equal('[1,2,{"a":1,"b":2,"c":3,"d":4}]');
-        should(mj.serialize(list2)).not.equal(JSON.stringify(list2));
+        should(mj.stringify(list2)).equal('[1,2,{"a":1,"b":2,"c":3,"d":4}]');
+        should(mj.stringify(list2)).not.equal(JSON.stringify(list2));
 
-        // Arrays are serialized canonically
-        should(mj.serialize(list1)).equal(mj.serialize(list2));
+        // Arrays are stringify canonically
+        should(mj.stringify(list1)).equal(mj.stringify(list2));
     });
-    it("serialize(obj) serializes atomic values", function() {
+    it("stringify(obj) serializes atomic values", function() {
         var mj = new MerkleJson();
-        should(mj.serialize(true)).equal(JSON.stringify(true));
-        should(mj.serialize(false)).equal(JSON.stringify(false));
-        should(mj.serialize(undefined)).equal(JSON.stringify(undefined));
-        should(mj.serialize(null)).equal(JSON.stringify(null));
-        should(mj.serialize(() => 1)).equal(JSON.stringify(() => 1));
+        should(mj.stringify(true)).equal(JSON.stringify(true));
+        should(mj.stringify(false)).equal(JSON.stringify(false));
+        should(mj.stringify(undefined)).equal(JSON.stringify(undefined));
+        should(mj.stringify(null)).equal(JSON.stringify(null));
+        should(mj.stringify(() => 1)).equal(JSON.stringify(() => 1));
         function f(a) {
             return a+1;
         };
-        should(mj.serialize(f)).equal(JSON.stringify(f));
+        should(mj.stringify(f)).equal(JSON.stringify(f));
         var t = new Date();
-        should(mj.serialize(t)).equal(JSON.stringify(t));
-        should(mj.serialize(-1/3)).equal(JSON.stringify(-1/3));
+        should(mj.stringify(t)).equal(JSON.stringify(t));
+        should(mj.stringify(-1/3)).equal(JSON.stringify(-1/3));
     });
 
 })

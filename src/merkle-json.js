@@ -236,12 +236,12 @@
             throw new Error("hash() not supported:" + typeof(value));
         }
 
-        serialize(value) {
+        stringify(value) {
             if (value instanceof Array) {
                 var body = value.reduce((a,v) => {
                     return a 
-                        ? `${a},${this.serialize(v)}`
-                        : `${this.serialize(v)}`;
+                        ? `${a},${this.stringify(v)}`
+                        : `${this.stringify(v)}`;
                 },"");
                 return `[${body}]`;
             } else if (value instanceof Date) {
@@ -255,8 +255,8 @@
                 var keys = Object.keys(value).sort();
                 var body = keys.reduce((a,k) => {
                     return a 
-                        ? `${a},"${k}":${this.serialize(value[k])}`
-                        : `"${k}":${this.serialize(value[k])}`;
+                        ? `${a},"${k}":${this.stringify(value[k])}`
+                        : `"${k}":${this.stringify(value[k])}`;
                 }, "");
                 return(`{${body}}`);
             } else {

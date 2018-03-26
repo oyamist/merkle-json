@@ -25,7 +25,7 @@ var obj = {
 };
 console.log(JSON.stringify(obj)); // {"d":4,"b":2,"a":1,"c":3}
 var mj = new MerkleJson();
-console.log(mj.serialize(obj)); // {"a":1,"b":2,"c":3,"d":4}
+console.log(mj.stringify(obj)); // {"a":1,"b":2,"c":3,"d":4}
 ```
 
 ### Compute hash of JSON object
