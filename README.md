@@ -66,5 +66,5 @@ var hash = mj.hash({
     any2: thing2, 
     any3: thing3, 
     merkleHash: e77b735125fec27a61c6f54b17fb6221, // ignored
-}); // 441e4f8dabdc6cb17dc9500cee73155b
+}, useMerkleHash); // 441e4f8dabdc6cb17dc9500cee73155b
 ```
