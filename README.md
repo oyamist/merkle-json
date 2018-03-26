@@ -14,7 +14,7 @@ object hashes if the object has no Merkle hash tag. If a Merkle hash
 tag is present, its value is returned as the hash value of that object.
 
 ### Serialize JSON object
-Unlike JSON, MerklJson serializes objects canonically.
+Unlike JSON, MerkleJson serializes objects canonically.
 
 ```js
 var obj = {
