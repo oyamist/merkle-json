@@ -222,5 +222,22 @@
         should(mj.stringify(t)).equal(JSON.stringify(t));
         should(mj.stringify(-1/3)).equal(JSON.stringify(-1/3));
     });
+    it("stringify(obj) honors toJSON() method of object", function() {
+        var mj = new MerkleJson();
+        class TestObj {
+            constructor(a) {
+                this.a = a;
+                this.random = Math.random();
+            }
+            toJSON() {
+                return {
+                    a: this.a,
+                }
+            }
+        }
+
+        var obj = new TestObj(1,2);
+        should(mj.stringify(obj)).equal('{"a":1}');
+    });
 
 })
