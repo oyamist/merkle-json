@@ -24,17 +24,17 @@
     });
     it("hash(Date) calculates hash code", function() {
         var mj = new MerkleJson();
-        var t = new Date(2018,1,14);
+        var t = new Date(Date.UTC(2018,1,14));
         var obj = {
             t,
         };
         should(mj.hash(obj)).equal(mj.hash({
-            t: new Date(2018,1,14),
+            t: new Date(Date.UTC(2018,1,14)),
         }));
         should(mj.hash(obj)).not.equal(mj.hash({
-            t: new Date(2018,1,15),
+            t: new Date(Date.UTC(2018,1,15)),
         }));
-        should(mj.hash(obj)).equal("bf9e3b30cb0196554ead147d78bc8c9d");
+        should(mj.hash(obj)).match(/b6777f0/);
         should(mj.hash(obj)).equal(mj.hash({
             t: t.toJSON(),
         }));
