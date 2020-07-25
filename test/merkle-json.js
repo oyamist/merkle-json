@@ -111,7 +111,7 @@
         should.equal(mj.hash([{merkleHash:hfoo,anything:'do-not-care'}]), mj.hash(hfoo));
         should.equal(mj.hash({merkleHash:'some-hash', a:1}), 'some-hash');
     });
-    it("hash(object) handles objects with non-serializable properties", function() {
+    it("TESTTESThash(object) ignores toJSON", function() {
         class TestClass {
             constructor() {
                 this.color = 'red';             // serialized
@@ -128,11 +128,18 @@
            o.color = 'red';
            return o;
         })();
-        should(typeof obj.toJSON).equal('undefined');
-        should(typeof new TestClass().toJSON).equal('function');
         var mj = new MerkleJson();
-        var hash1 = mj.hash(new TestClass());
-        var hash2 = mj.hash(new TestClass());
+
+        // The random property affects the hash
+        var tc1 = new TestClass();
+        var tc2 = new TestClass();
+        var hash1 = mj.hash(tc1);
+        var hash2 = mj.hash(tc2);
+        should(hash1).not.equal(hash2);
+
+        // Call toJSON() to hash unserialized properties
+        var hash1 = mj.hash(tc1.toJSON());
+        var hash2 = mj.hash(tc2.toJSON());
         should(hash1).equal(hash2);
     });
     it("hash(object) does not re-compute object having Merkle hash tags", function() {
@@ -238,6 +245,27 @@
 
         var obj = new TestObj(1,2);
         should(mj.stringify(obj)).equal('{"a":1}');
+    });
+    it("TESTTESThash(object) inside toJSON()", ()=>{
+        var mj = new MerkleJson();
+        class TestClass {
+            constructor() {
+                this.color = "red";
+            }
+
+            toJSON() {
+                this.merkleHash = mj.hash(this, true);
+                return this;
+            }
+        }
+        var obj = new TestClass();
+        var merkleHash = mj.hash({color:"red"});
+        var json = JSON.stringify(obj);
+        should(json).equal(JSON.stringify({
+            color: "red",
+            merkleHash,
+        }));
+        should(mj.hash(JSON.parse(json))).equal(merkleHash);
     });
 
 })

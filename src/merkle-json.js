@@ -224,12 +224,11 @@
                 if (cached && value[this.hashTag]) {
                     return value[this.hashTag];
                 }
-                if ((typeof value.toJSON) === 'function') {
-                    value = JSON.parse(JSON.stringify(value));
-                }
                 var keys = Object.keys(value).sort();
                 var acc = keys.reduce((a,k) => {
-                    return k === this.hashTag ? a : (a+k+':'+this.hash(value[k])+',')
+                    return k === this.hashTag 
+                        ? a 
+                        : (a+k+':'+this.hash(value[k])+',')
                 }, "");
                 return this.hash(acc);
             }
