@@ -1,5 +1,5 @@
 module.exports = {
-    MerkleJson: require("./src/merkle-json"),
+    MerkleJson: require("./src/merkle-json.cjs"),
 
 };
 

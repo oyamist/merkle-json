@@ -13,7 +13,7 @@
     "merkle-json": "^2.1.0"
   },
   "devDependencies": {
-    "mocha": "^7.1.1",
+    "mocha": "^10.2.0",
     "should": "^11.2.0"
   },
   "engine-strict": true,

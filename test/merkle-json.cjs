@@ -1,4 +1,4 @@
-(typeof describe === 'function') && describe("MerkleJson", function() {
+(typeof describe === 'function') && describe("MerkleJson (cjs)", function() {
     const should = require("should");
     const fs = require('fs');
     const path = require('path');
