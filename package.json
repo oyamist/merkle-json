@@ -9,9 +9,6 @@
     "src": "src",
     "doc": "doc"
   },
-  "dependencies": {
-    "merkle-json": "^2.1.0"
-  },
   "devDependencies": {
     "mocha": "^10.2.0",
     "should": "^11.2.0"
