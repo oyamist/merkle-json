@@ -10,18 +10,15 @@
     "doc": "doc"
   },
   "devDependencies": {
-    "mocha": "^10.2.0",
-    "should": "^11.2.0"
+    "@sc-voice/vitest": "^4.0.1"
   },
   "engine-strict": true,
   "engines": {
     "node": ">=6.11.0"
   },
   "scripts": {
-    "test": "npm run test:verbose",
-    "test:test": "mocha -w -R min --inline-diffs -g TEST",
-    "test:verbose": "mocha --inline-diffs",
-    "test:watch": "mocha -w --inline-diffs"
+    "test": "vitest run",
+    "test:test": "vitest -w --reporter=min -t TEST"
   },
   "repository": {
     "type": "git",
