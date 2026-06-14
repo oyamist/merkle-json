@@ -26,10 +26,8 @@
   },
   "bin": {},
   "keywords": [
-    "REST",
-    "resource bundle",
-    "express",
-    "kinann-org"
+    "JSON",
+    "merkle hash"
   ],
   "author": "Karl Lew",
   "license": "MIT",
