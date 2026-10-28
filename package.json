@@ -9,9 +9,6 @@
     "src": "src",
     "doc": "doc"
   },
-  "devDependencies": {
-    "@sc-voice/vitest": "^4.0.1"
-  },
   "engine-strict": true,
   "engines": {
     "node": ">=6.11.0"
@@ -34,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/oyamist/merkle-json/issues"
   },
-  "homepage": "https://github.com/oyamist/merkle-json"
+  "homepage": "https://github.com/oyamist/merkle-json",
+  "devDependencies": {
+    "vitest": "^5.0.5"
+  }
 }

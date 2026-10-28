@@ -1,4 +1,4 @@
-import { describe, it, expect } from '@sc-voice/vitest';
+import { describe, it, expect } from 'vitest';
 import { MerkleJson } from "../index.mjs"
 import fs from "fs";
 import path from "path";
